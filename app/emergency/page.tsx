@@ -1,40 +1,40 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Shield, Phone, MapPin, Clock, AlertTriangle, Navigation } from "lucide-react"
-import Link from "next/link"
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Shield, Phone, MapPin, Clock, AlertTriangle, Navigation } from "lucide-react";
+import Link from "next/link";
 
 export default function EmergencyPage() {
-  const [location, setLocation] = useState<{lat: number, lng: number} | null>(null)
-  const [currentTime, setCurrentTime] = useState(new Date())
+  const [location, setLocation] = useState<{ lat: number; lng: number } | null>(null);
+  const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
     // Update time every second
-    const timer = setInterval(() => setCurrentTime(new Date()), 1000)
-    
+    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
+
     // Get user location
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           setLocation({
             lat: position.coords.latitude,
-            lng: position.coords.longitude
-          })
+            lng: position.coords.longitude,
+          });
         },
         (error) => {
-          console.log("Location access denied")
+          console.log("Location access denied");
         }
-      )
+      );
     }
 
-    return () => clearInterval(timer)
-  }, [])
+    return () => clearInterval(timer);
+  }, []);
 
   const handleEmergencyCall = () => {
-    window.location.href = "tel:911"
-  }
+    window.location.href = "tel:911";
+  };
 
   return (
     <div className="min-h-screen bg-red-50">
@@ -147,7 +147,7 @@ export default function EmergencyPage() {
                       911
                     </Button>
                   </div>
-                  
+
                   <div className="flex items-center justify-between p-4 border rounded-lg">
                     <div>
                       <h3 className="font-semibold">Non-Emergency Police</h3>
@@ -294,4 +294,13 @@ export default function EmergencyPage() {
                     <Shield className="h-6 w-6 mb-2" />
                     Report Non-Emergency Crime
                   </Button>
-                </Link>\
+                </Link>
+                {/* Additional quick action buttons can be added here */}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+}
