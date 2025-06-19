@@ -29,7 +29,9 @@ export default function EmergencyPage() {
       );
     }
 
-    return () => clearInterval(timer);
+    return () => {
+      clearInterval(timer);
+    };
   }, []);
 
   const handleEmergencyCall = () => {
@@ -38,7 +40,6 @@ export default function EmergencyPage() {
 
   return (
     <div className="min-h-screen bg-red-50">
-      {/* Header */}
       <header className="border-b bg-white">
         <div className="container mx-auto px-4 py-4">
           <nav className="flex items-center justify-between">
@@ -67,7 +68,7 @@ export default function EmergencyPage() {
                 <AlertTriangle className="h-16 w-16 text-red-600 mx-auto mb-4" />
                 <h1 className="text-3xl font-bold text-red-700 mb-2">Emergency Services</h1>
                 <p className="text-red-600 text-lg mb-6">
-                  For immediate life-threatening emergencies requiring police, fire, or medical response
+                  For immediate life-threatening emergencies requiring police, fire, or medical response.
                 </p>
                 <Button 
                   onClick={handleEmergencyCall}
@@ -295,7 +296,7 @@ export default function EmergencyPage() {
                     Report Non-Emergency Crime
                   </Button>
                 </Link>
-                {/* Additional quick action buttons can be added here */}
+                {/* Add more quick action buttons as needed */}
               </div>
             </CardContent>
           </Card>
